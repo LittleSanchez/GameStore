@@ -1,0 +1,21 @@
+﻿:root{
+    --container-round: 10px;
+}
+
+._rnd{
+    border-radius: var(--container-round);
+}
+
+._rnd_tl {
+    border-top-left-radius: var(--container-round);
+}
+._rnd_tr {
+    border-top-right-radius: var(--container-round);
+}
+._rnd_bl {
+    border-bottom-left-radius: var(--container-round);
+}
+._rnd_br {
+    border-bottom-right-radius: var(--container-round);
+}
+

@@ -1,0 +1,37 @@
+﻿@model GameStore.Client.Models.UserViewModel
+
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+    <div class="row justify-content-center my-0 my-sm-4">
+        <div class="col-12 col-sm-12 col-lg-8 col-xl-9 p-0 m-0">
+            <div class="_rnd shadow-lg container-style bg-light shadow-lg pb-4">
+                <h2>Profile</h2>
+                <div class="d-flex">
+                    <div class="mr-2 my-2">
+                        <img alt="profile image"/>
+                    </div>
+                    <div class="font-18 px-3">
+                        <div class="row my-2">
+                            <b class="mr-2">@Html.NameFor(model => model.UserName):</b>
+                            <span>@Html.DisplayFor(model => model.UserName)</span>
+                        </div>
+                        <div class="row my-2">
+                            <b class="mr-2">@Html.NameFor(model => model.Email):</b>
+                            <span>@Html.DisplayFor(model => model.Email)</span>
+                        </div>
+                        <div class="row my-2">
+                            <b class="mr-2">@Html.NameFor(model => model.PhoneNumber):</b>
+                            <span>@Html.DisplayFor(model => model.PhoneNumber)</span>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <a href="/Auth/EditProfile" class="btn btn-primary mx-1">Edit</a>
+                    <a href="/Auth/Logout" class="btn btn-danger mx-1">Log out</a>
+                </div>
+            </div>
+        </div>
+    </div>

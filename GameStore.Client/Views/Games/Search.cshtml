@@ -1,0 +1,17 @@
+﻿@model ICollection<GameStore.Client.Models.GameViewModel>
+@foreach(var item in Model)
+{
+    <li class="list-group-item p-0">
+        <a class="d-flex text-decoration-none" href="/Games/Details/@item.Id">
+            <img class="col-2 h-100 p-2" src="@item.Image" />
+            <div class="p-2">
+                <h4>@item.Name</h4>
+                <p>
+                    <strong>Genre: </strong>@item.Genre
+                    <strong>Year: </strong>@item.Year
+                    <strong>Developer: </strong>@item.Developer
+                </p>
+            </div>
+        </a>
+    </li>
+}

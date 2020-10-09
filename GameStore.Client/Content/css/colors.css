@@ -1,0 +1,13 @@
+﻿:root {
+    --login-color: rgb(127, 255, 14);
+    --register-color: rgb(239, 104, 7);
+}
+.btn-outline-login {
+    border-color: var(--login-color);
+    color: var(--login-color);
+}
+
+.btn-outline-register {
+    border-color: var(--register-color);
+    color: var(--register-color);
+}

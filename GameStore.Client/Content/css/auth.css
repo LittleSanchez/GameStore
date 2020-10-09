@@ -1,0 +1,23 @@
+﻿.auth_container {
+    border: 4px solid var(--auth-color);
+    border-radius: 20px;
+    background-color: rgb(234,234,234);
+}
+
+.my_title {
+    position: absolute;
+    color: var(--auth-color);
+    left: 57px;
+    top: 10px;
+    background-color: rgb(234,234,234);
+}
+
+.form_border_white {
+    border: 5px solid white;
+    border-radius: 15px;
+}
+
+.bg_light {
+    background: rgb(234,234,234);
+}
+

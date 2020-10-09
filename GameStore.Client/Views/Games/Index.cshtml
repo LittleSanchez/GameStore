@@ -1,0 +1,116 @@
+﻿@model IEnumerable<GameStore.Client.Models.GameViewModel>
+
+@{
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<!--FILTER MODAL-->
+<div class="row justify-content-center my-0 my-sm-4">
+
+    <div id="filter__field" class="pr-0 modal fade" tabindex="-1" aria-hidden="true" role="dialog">
+        @*<div class="modal-backdrop bg-transparent" style="z-index: -1;">
+            </div>*@
+        <div class="modal-dialog" role="document">
+            <div id="filter__content" class="modal-content modal-body p-4">
+                
+            </div>
+            <button id="modal__close__btn" class="btn" type="button" data-toggle="modal" data-target="#filter__field">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <!--/FILTER MODAL-->
+
+    <div class="d-none d-lg-block col-lg-3 col-xl-2 p-0 m-0 mr-lg-4">
+        <div id="sidebar__main" class="disabled _rnd container p-4 bg-light">
+            <button type="button" class="btn btn-outline d-lg-none w-100" data-toggle="modal" data-target="#filter__field" data-gs-navbar-toggler>
+                <i class="fas fa-filter"></i>
+                <span>Filter</span>
+            </button>
+            <h2>Filters</h2>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle col-12" type="button" id="sortTypesBtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sort by
+                </button>
+                <div class="dropdown-menu col-12 shadow-lg rounded" aria-labelledby="sortTypesBtn">
+                    @foreach (var item in ViewBag.SortTypes)
+                    {
+                        <a class="dropdown-item" data-gs-sort-btn data-gs-sort-btn-name="@item" href="#">Sort by @item.Split("-".ToCharArray())[0]</a>
+                    }
+
+                </div>
+            </div>
+            <div class="">
+                <button type="button" class="sidebar__group__btn btn my-1 w-100 text-left text-decoration-none" data-toggle="collapse" data-target="#genreListFilter" aria-expanded="false" aria-controls="genreListFilter">
+                    <h4>Genres</h4>
+                </button>
+                <div id="genreListFilter" class="btn-group-toggle collapse">
+                    @foreach (var item in Model.Select(x => x.Genre).Distinct())
+                    {
+                        <button class="mb-1 col-12 btn btn-outline" data-gs-genre-btn>@item</button>
+                    }
+                </div>
+            </div>
+            <div class="">
+                <button type="button" class="sidebar__group__btn btn my-1 w-100 text-left text-decoration-none" data-toggle="collapse" data-target="#developerListFilter" aria-expanded="false" aria-controls="developerListFilter">
+                    <h4>Developers</h4>
+                </button>
+                <div id="developerListFilter" class="btn-group-toggle collapse">
+                    @foreach (var item in Model.Select(x => x.Developer).Distinct())
+                    {
+                        <button class="mb-1 col-12 btn btn-outline" data-gs-developer-btn>@item</button>
+                    }
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-12 col-sm-12 col-lg-8 col-xl-9 p-0 m-0">
+        <div class="_rnd shadow-lg container-style bg-light shadow-lg">
+            <ul id="cards__list" class="row games-list-style" style="padding-left: 0;">
+                <!--CARD-->
+                @foreach (var item in Model)
+                {
+                    <li class="_rnd my_card list-unstyled col-sm-6 col-12 col-md-4 col-lg-4 col-xl-3">
+                        <div class="card-content position-relative" style="padding-bottom: 58px;">
+                            <a href="~/Games/Details/@item.Id" class="_rnd_tl _rnd_tr d-block image_shadow card-img-top" style="background: url(@item.Image) no-repeat center;"></a>
+                            <div class="card-body">
+                                <h4 class="card-title">@item.Name</h4>
+                                <p class="card-text">$@item.Price</p>
+                                <p class="card-text">@item.Genre</p>
+                                <p class="card-text">@item.Developer</p>
+                                <p class="card-text">@item.Year</p>
+                            </div>
+                            <div class="card_buttons card-body pt-0 d-flex justify-content-end position-absolute">
+                                <button type="button" data-gs-archive-btn data-target-id="@item.Id" class="btn btn-outline-danger">Archive</button>
+                                <a href="~/Games/Edit/@item.Id" class="ml-1 btn btn-outline-primary">Edit</a>
+                            </div>
+                        </div>
+                    </li>
+                }
+                @if (!(ViewBag.Filter == true))
+                {
+                    <li class="_rnd my_card list-unstyled col-sm-6 col-12 col-md-4 col-lg-4 col-xl-3">
+                        <div class="card-content position-relative card_create">
+                            <a href="~/Games/Create" class="_rnd_tl _rnd_tr d-block image_shadow  card-img-top" style="">
+                                <p class="card-title position-absolute">Add card</p>
+                            </a>
+                            <div class="card-body">
+                                <h4 class="card-title">New game</h4>
+                                <p class="card-text">-</p>
+                                <p class="card-text">-</p>
+                                <p class="card-text">-</p>
+                                <p class="card-text">-</p>
+                                <div class="card_buttons card-body pt-0 d-flex justify-content-end position-absolute">
+                                    <a href="~/Games/Create" class="btn btn-outline-primary">Add</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                }
+                <!--/CARD-->
+            </ul>
+        </div>
+    </div>
+</div>

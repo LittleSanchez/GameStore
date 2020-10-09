@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+    <link href="~/Content/css/design.css" rel="stylesheet" />
+</head>
+<body class="bg-secondary" style="color: black!important">
+    <!--ARCHIVE-->
+    @if (ViewBag.Archive != null)
+    {
+
+        <div id="archive__field" class="pr-0 modal fade" tabindex="-1" aria-hidden="true" role="dialog">
+            @*<div class="modal-backdrop bg-transparent" style="z-index: -1;">
+                </div>*@
+            <button id="archive__btn" type="button" class="btn btn-outline w-100" data-toggle="modal" data-target="#archive__field" data-gs-navbar-toggler>
+                <i class="fas fa-archive"></i>
+                <span>Archive</span>
+            </button>
+            <div class="modal-dialog mt-0" role="document">
+                <button id="modal__close__btn" class="btn" type="button" data-toggle="modal" data-target="#archive__field">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="modal-content modal-body p-3">
+                    <ul id="archive__list" class="list-group list-unstyled">
+                        @{
+
+                            Html.RenderPartial("ArchiveList", (object)ViewBag.Archive);
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    }
+
+    <!--/ARCHIVE-->
+    <!--SEARCH-->
+
+    <div id="search__field" class="pr-0 modal fade" tabindex="-1" aria-hidden="true" role="dialog">
+        @*<div class="modal-backdrop bg-transparent" style="z-index: -1;">
+            </div>*@
+        <button type="button" class="btn btn-outline w-100" data-toggle="modal" data-target="#search__field" data-gs-navbar-toggler>
+            <i class="fas fa-search"></i>
+            <span>Search</span>
+        </button>
+        <div class="modal-dialog mt-0" role="document">
+            <div class="search__field__header pb-3 pt-2 mb-2 position-sticky">
+                <div class="modal-content">
+                    <input id="search__input" class="form-control" type="text" name="search__input" value="" placeholder="Search" />
+                    <button id="modal__close__btn" class="btn" type="button" data-toggle="modal" data-target="#search__field">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="collapse modal-content modal-body p-3">
+                <ul id="search__results__field" class="list-group list-unstyled">
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!--/SEARCH-->
+   <!--NAVBAR-->
+    <nav class="navbar navbar-expand-md bg-white">
+        <a class="navbar-brand" href="~/">Game Store</a>
+        <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul id="navbar__buttons" class="list-group list-group-horizontal-md list-unstyled">
+                <li>
+                    <a href="~/Editor/Index" class="btn btn-outline w-100" data-gs-navbar-toggler>
+                        <i class="fas fa-edit"></i>
+                        <span>Editor</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="~/Auth/Profile" class="btn btn-outline w-100" data-gs-navbar-toggler>
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <i class="fas fa-sign-in-alt"></i>
+                            <span>Log in</span>
+                        }
+                        else
+                        {
+                            <i class="fas fa-user"></i>
+                            <span>Profile</span>
+                        }
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--/NAVBAR-->
+
+    <div class="container px-0">
+        @RenderBody()
+        <footer class="main_footer d-flex align-items-end py-4">
+            <p>Copyright &copy; 2020 GameStore Inc. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    @*<script src="~/Scripts/popper.min.js"></script>*@
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/39c9a805b6.js" crossorigin="anonymous"></script>
+    @*<script src="~/Scripts/js/main.js"></script>*@
+    @Scripts.Render("~/Scripts/custom")
+    @Styles.Render("~/Content/custom")
+</body>
+</html>
