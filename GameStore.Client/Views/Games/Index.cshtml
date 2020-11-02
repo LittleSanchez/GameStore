@@ -82,10 +82,13 @@
                                 <p class="card-text">@item.Developer</p>
                                 <p class="card-text">@item.Year</p>
                             </div>
+                            @if (User.IsInRole("Admin"))
+                            {
                             <div class="card_buttons card-body pt-0 d-flex justify-content-end position-absolute">
                                 <button type="button" data-gs-archive-btn data-target-id="@item.Id" class="btn btn-outline-danger">Archive</button>
                                 <a href="~/Games/Edit/@item.Id" class="ml-1 btn btn-outline-primary">Edit</a>
                             </div>
+                            }
                         </div>
                     </li>
                 }

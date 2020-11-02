@@ -75,7 +75,7 @@ namespace GameStore.Client.Controllers
 
         #endregion
         #region Create
-
+        [Authorize]
         [HttpGet]
         public ActionResult Create()
         {
@@ -83,6 +83,7 @@ namespace GameStore.Client.Controllers
             ViewBag.Genres = gameService.GetStringGenres();
             return View();
         }
+        [Authorize]
         [HttpPost]
         public ActionResult Create(GameViewModel model, HttpPostedFileBase image)
         {
@@ -154,7 +155,7 @@ namespace GameStore.Client.Controllers
 
         #endregion
         #region Edit
-
+        [Authorize]
         [HttpGet]
         public ActionResult Edit(int id)
         {
@@ -164,6 +165,7 @@ namespace GameStore.Client.Controllers
             ViewBag.Genres = gameService.GetStringGenres();
             return View(game);
         }
+        [Authorize]
         [HttpPost]
         public ActionResult Edit(GameViewModel model, HttpPostedFileBase image)
         {
@@ -237,19 +239,19 @@ namespace GameStore.Client.Controllers
         {
             return PartialView(mapper.Map<ICollection<ArchiveGameViewModel>>(gameService.GetArchiveGames()));
         }
-
+        [Authorize]
         public ActionResult Archive(int id)
         {
             gameService.ArchiveGame(id);
             return Content("ok");
         }
-       
+        [Authorize]
         public ActionResult Recover(int id)
         {
             gameService.RecoverGame(id);
             return Content("ok");
         }
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             gameService.DeleteGame(id);

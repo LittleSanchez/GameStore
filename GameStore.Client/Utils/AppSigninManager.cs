@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
+﻿using GameStore.DAL.Entities;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Owin;
@@ -10,7 +11,7 @@ using System.Web;
 
 namespace GameStore.Client.Utils
 {
-    public class AppSigninManager: SignInManager<IdentityUser, string>
+    public class AppSigninManager: SignInManager<User, string>
     {
         public AppSigninManager(AppUserManager userManager, IAuthenticationManager authenticationManager)
             : base(userManager, authenticationManager)

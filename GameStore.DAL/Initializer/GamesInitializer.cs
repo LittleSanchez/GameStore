@@ -79,6 +79,7 @@ namespace GameStore.DAL.Initializer
             context.Games.AddRange(games);
             context.Genres.AddRange(genres);
             context.Developers.AddRange(developers);
+            context.ArchiveGames.AddRange(new List<ArchiveGame>());
 
             context.SaveChanges();
 

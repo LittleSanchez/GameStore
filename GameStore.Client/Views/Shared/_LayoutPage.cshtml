@@ -18,10 +18,13 @@
         <div id="archive__field" class="pr-0 modal fade" tabindex="-1" aria-hidden="true" role="dialog">
             @*<div class="modal-backdrop bg-transparent" style="z-index: -1;">
                 </div>*@
+            @if (User.IsInRole("Admin"))
+            {
             <button id="archive__btn" type="button" class="btn btn-outline w-100" data-toggle="modal" data-target="#archive__field" data-gs-navbar-toggler>
                 <i class="fas fa-archive"></i>
                 <span>Archive</span>
             </button>
+            }
             <div class="modal-dialog mt-0" role="document">
                 <button id="modal__close__btn" class="btn" type="button" data-toggle="modal" data-target="#archive__field">
                     <i class="fas fa-times"></i>

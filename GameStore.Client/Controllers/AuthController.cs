@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
+using GameStore.DAL.Entities;
 
 namespace GameStore.Client.Controllers
 {
@@ -29,12 +30,15 @@ namespace GameStore.Client.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(LoginViewModel model)
+        public ActionResult Login(LoginViewModel model, string ReturnUrl)
         {
+            
             var signInManager = HttpContext.GetOwinContext().Get<AppSigninManager>();
             var status = signInManager.PasswordSignIn(model.Username, model.Password, false, false);
             if (status == SignInStatus.Success)
-            { 
+            {
+                if (ReturnUrl != null)
+                    return Redirect(ReturnUrl);
                 return RedirectToAction("Index", "Games");
             }
             return Content("Can't log in");
@@ -53,10 +57,12 @@ namespace GameStore.Client.Controllers
             {
                 var manager = HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
 
-                var user = new IdentityUser
+                var user = new User
                 {
                     UserName = model.Username,
-                    Email = model.Email
+                    Email = model.Email,
+                    Age = 18, 
+                    Gender = "Male"
                 };
 
                 var result = await manager.CreateAsync(user, model.Password);
@@ -105,7 +111,8 @@ namespace GameStore.Client.Controllers
             var result = await userManager.UpdateAsync(user);
             return RedirectToAction("Profile");
         }
-
+        [Authorize]
+        [HttpGet]
         public async Task<ActionResult> Logout()
         {
             var signInManager = HttpContext.GetOwinContext().Get<AppSigninManager>();

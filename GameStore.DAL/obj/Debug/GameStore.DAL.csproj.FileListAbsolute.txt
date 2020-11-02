@@ -10,11 +10,7 @@ C:\Users\bodya\source\repos\GameStore\GameStore.DAL\obj\Debug\GameStore.DAL.cspr
 C:\Users\bodya\source\repos\GameStore\GameStore.DAL\obj\Debug\GameStore.DAL.csproj.CopyComplete
 C:\Users\bodya\source\repos\GameStore\GameStore.DAL\obj\Debug\GameStore.DAL.dll
 C:\Users\bodya\source\repos\GameStore\GameStore.DAL\obj\Debug\GameStore.DAL.pdb
-C:\Users\bodya\source\repos\GameStore\GameStore.DAL\obj\Debug\GameStore.DAL.Migrations.InitialCreate.resources
-C:\Users\bodya\source\repos\GameStore\GameStore.DAL\obj\Debug\GameStore.DAL.csproj.GenerateResource.cache
-C:\Users\bodya\source\repos\GameStore\GameStore.DAL\obj\Debug\GameStore.DAL.Migrations.addArchiveTable.resources
 C:\Users\bodya\source\repos\GameStore\GameStore.DAL\bin\Debug\Microsoft.AspNet.Identity.Core.dll
 C:\Users\bodya\source\repos\GameStore\GameStore.DAL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
 C:\Users\bodya\source\repos\GameStore\GameStore.DAL\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 C:\Users\bodya\source\repos\GameStore\GameStore.DAL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
-C:\Users\bodya\source\repos\GameStore\GameStore.DAL\obj\Debug\GameStore.DAL.Migrations.identity.resources

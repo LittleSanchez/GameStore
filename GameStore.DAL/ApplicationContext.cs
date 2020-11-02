@@ -5,9 +5,10 @@ namespace GameStore.DAL
     using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Data.Entity;
+    using System.Data.Entity.Migrations;
     using System.Linq;
 
-    public class ApplicationContext : IdentityDbContext<IdentityUser>
+    public class ApplicationContext : IdentityDbContext<User>
     {
         public DbSet<Genre> Genres{ get; set; }
         public DbSet<Developer> Developers { get; set; }
@@ -18,7 +19,8 @@ namespace GameStore.DAL
         public ApplicationContext()
             : base("name=ApplicationContext")
         {
-           //Database.SetInitializer(new GamesInitializer());
+           Database.SetInitializer(new GamesInitializer());
+            
         }
 
         }
